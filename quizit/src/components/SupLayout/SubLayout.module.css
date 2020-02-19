@@ -1,0 +1,33 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    font-size: calc(10px + 2vmin);
+    min-height: 100vh;
+}
+
+.nav {
+    background-color: #43464c;
+    line-height: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav button {
+    border: none;
+    color: white;
+    padding: 0 0.5em;
+    font-family: monospace;
+    font-weight: 900;
+    font-size: 2em;
+    background-color: #282c34;
+}
+
+.nav header {
+    color: white;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 0.5em;
+}
