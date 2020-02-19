@@ -1,0 +1,13 @@
+.outer {
+    background-color: #282c34;
+    display: flex;
+    font-size: calc(10px + 2vmin);
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.inner {
+    background: white;
+    margin: 0em 1em;
+    width: 100%;
+}
