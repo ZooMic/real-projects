@@ -3,11 +3,11 @@ import { useHistory } from "react-router-dom";
 import styles from './SubLayout.module.css'
 
 const SubLayout = ({ children }) => {
-    const history = useHistory();
+    const { goBack } = useHistory();
     return (
         <div className={styles.wrapper}>
             <nav className={styles.nav}>
-                <button>{"<"}</button>
+                <button onClick={goBack}>{"<"}</button>
                 <header>Quizit</header>
             </nav>
             <div>
