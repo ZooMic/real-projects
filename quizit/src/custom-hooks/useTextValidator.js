@@ -15,5 +15,5 @@ export default (value, regex) => {
     })
 
     const isValid = result === undefined
-    return [isValid]
+    return isValid
 }

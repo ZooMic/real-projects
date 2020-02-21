@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from "react-router-dom";
 import styles from './SubLayout.module.css'
 
-const SubLayout = ({ children }) => {
+const SubLayout = ({ children, className }) => {
     const { goBack } = useHistory();
     return (
         <div className={styles.wrapper}>
@@ -10,7 +10,7 @@ const SubLayout = ({ children }) => {
                 <button onClick={goBack}>{"<"}</button>
                 <header>Quizit</header>
             </nav>
-            <div>
+            <div className={className}>
                 {children}
             </div>
         </div>

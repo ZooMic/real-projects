@@ -1,16 +1,96 @@
-/* title, quizNameBox, valid */
+/* wrapper, form, title, error, submitBtn, warning, asterixMessage, available, disabled, warningBtn */
 
-.form {
+.wrapper {
     height: 100%;
-}
-
-.quizNameBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 2em;
 }
 
 .title {
     font-size: 2em;
-    /* padding: 2em; */
+    font-weight: bold;
+    border-bottom: 2px solid currentColor;
+    display: inline-block;
+    line-height: 0.85;
+    text-shadow:
+        2px 2px #fffaf2,
+        2px -2px #fffaf2,
+        -2px 2px #fffaf2,
+        -2px -2px #fffaf2;
+    width: 100%;
+}
+
+.title span {
+    padding-left: 1em;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5em;
+    margin: 2em 1em;
+    padding: 0.5em;
+}
+
+.form input {
+    font-size: inherit;
+    width: -webkit-fill-available;
+    padding: 0.5em;
+}
+
+.form > * {
+    display: block;
+    margin-top: 0.75em;
+}
+
+.form > *:first-child {
+    margin-top: 0em;
+}
+
+.form > *:last-child {
+    margin-bottom: 0em;
+}
+
+.asterixMessage {
+    font-size: 0.7em;
+    display: flex;
+    flex-direction: row;
+}
+
+.asterixMessage span {
+    margin-right: 0.3em;
+}
+
+.warning {
+    color: #ffc107;
+}
+
+.error {
+    color: #dc3545;
+}
+
+.submitBtn {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    padding: 0.5em;
+    text-align: center;
+    border: 5px solid;
+    color: white;
+    margin-top: 2em;
+}
+
+.disabled {
+    background-color: #6c757d;
+    border-color: #343a40;
+}
+
+.available {
+    background-color: #4285F4;
+    border-color: #0d47a1;
+}
+
+.warningBtn {
+    background-color: #ffbb33;
+    border-color: #ff8800;
 }
