@@ -29,4 +29,10 @@
     justify-content: center;
     align-items: center;
     padding-right: 0.5em;
+    margin-left: auto;
+}
+
+.child {
+    height: 100%;
+    padding: 2em;
 }

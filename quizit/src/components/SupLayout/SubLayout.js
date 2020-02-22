@@ -1,16 +1,17 @@
 import React from 'react'
 import { useHistory } from "react-router-dom";
-import styles from './SubLayout.module.css'
+import { wrapper, nav, child} from './SubLayout.module.css'
 
 const SubLayout = ({ children, className }) => {
-    const { goBack } = useHistory();
+    const { goBack, goForward } = useHistory();
     return (
-        <div className={styles.wrapper}>
-            <nav className={styles.nav}>
+        <div className={wrapper}>
+            <nav className={nav}>
                 <button onClick={goBack}>{"<"}</button>
                 <header>Quizit</header>
+                <button onClick={goForward}>{">"}</button>
             </nav>
-            <div className={className}>
+            <div className={`${child} ${className}`}>
                 {children}
             </div>
         </div>

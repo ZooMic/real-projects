@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5em;
+    margin: 2em 1em;
+    padding: 0.5em;
+}
+
+.wrapper input {
+    font-size: inherit;
+    width: -webkit-fill-available;
+    padding: 0.5em;
+    border: 2px solid;
+}
+
+.wrapper > * {
+    display: block;
+    margin-top: 0.75em;
+}
+
+.wrapper > *:first-child {
+    margin-top: 0em;
+}
+
+.wrapper > *:last-child {
+    margin-bottom: 0em;
+}

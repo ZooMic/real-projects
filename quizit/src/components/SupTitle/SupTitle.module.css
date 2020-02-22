@@ -1,0 +1,12 @@
+.underline {
+    border-bottom: 2px solid currentColor;
+    display: inline-block;
+    line-height: 0.85;
+    text-shadow:
+        2px 2px #fffaf2,
+        2px -2px #fffaf2,
+        -2px 2px #fffaf2,
+        -2px -2px #fffaf2;
+    width: 100%;
+    white-space: pre;
+}
