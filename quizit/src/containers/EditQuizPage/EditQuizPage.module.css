@@ -1,0 +1,41 @@
+.contentWrapper {
+
+}
+
+.contentWrapper input {
+    font-size: 1em;
+    width: 100%;
+}
+
+.inputWrapper {
+    display: flex;
+    font-size: 0.7em;
+    width: 100%;
+}
+
+.inputWrapper label {
+    margin-right: 0.3em;
+}
+
+.inputWrapper textarea {
+    font-size: 0.8em;
+    width: 100%;
+}
+
+.bordered {
+    border: 1px solid;
+}
+
+.checkboxButton {
+    width: 3em;
+    border: 1px solid;
+    border-left: 0px;
+}
+
+.green {
+    background-color: #2fc77e
+}
+
+.red {
+    background-color: #e83067
+}

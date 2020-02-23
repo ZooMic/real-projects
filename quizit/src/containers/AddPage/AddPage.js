@@ -4,7 +4,7 @@ import SubLayout from '../../components/SupLayout/';
 import SupTitle from '../../components/SupTitle/';
 import SupContent from '../../components/SupContent/';
 import { useTextValidator, useRouteNormalizer } from '../../custom-hooks/';
-import { error, submitBtn, warning, asterixMessage, available, disabled, warningBtn } from './AddPage.module.css';
+import { error, submitBtn, warning, asterixMessage, available, disabled, warningBtn, input } from './AddPage.module.css';
 
 // TODO - remove mock, handle real quiz list from redux state
 const existingQuiz = ['quiz-1', 'quiz-2']
@@ -48,7 +48,7 @@ const AddPage = () => {
             <SupTitle>Add new quiz</SupTitle>
             <SupContent>
                 <label htmlFor="quiz-name">How would you like to name it?</label>
-                <input type="text" name="quiz-name" id="quiz-name" value={quizName} onChange={onQuizNameChanged} placeholder="Example quiz name 1"/>
+                <input className={input} type="text" name="quiz-name" id="quiz-name" value={quizName} onChange={onQuizNameChanged} placeholder="Example quiz name 1"/>
                 {quizExist ? 
                     <div className={`${asterixMessage} ${warning}`}>
                         <span>*</span>

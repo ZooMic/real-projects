@@ -1,3 +1,10 @@
+.input {
+    font-size: inherit;
+    width: -webkit-fill-available;
+    padding: 0.5em;
+    border: 2px solid;
+}
+
 .asterixMessage {
     font-size: 0.7em;
     display: flex;
