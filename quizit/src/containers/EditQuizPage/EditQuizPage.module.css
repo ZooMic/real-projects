@@ -17,8 +17,9 @@
     margin-right: 0.3em;
 }
 
-.inputWrapper textarea {
-    font-size: 0.8em;
+.inputWrapper textarea, .inputWrapper input {
+    font-family: inherit;
+    font-size: 0.7em;
     width: 100%;
 }
 

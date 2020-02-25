@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { NavLink, useHistory } from "react-router-dom";
 import SubLayout from '../../components/SupLayout/';
 import SupTitle from '../../components/SupTitle/';
 import SupContent from '../../components/SupContent/';
+import Modal from '../../components/Modal/';
 import { useTextValidator, useRouteNormalizer } from '../../custom-hooks/';
 import { error, submitBtn, warning, asterixMessage, available, disabled, warningBtn, input } from './AddPage.module.css';
+
 
 // TODO - remove mock, handle real quiz list from redux state
 const existingQuiz = ['quiz-1', 'quiz-2']
@@ -44,25 +46,34 @@ const AddPage = () => {
 
     const quizNameIssue = (!quizNameIsValid && disabled) || (quizExist && warningBtn)
     return (
-        <SubLayout>
-            <SupTitle>Add new quiz</SupTitle>
-            <SupContent>
-                <label htmlFor="quiz-name">How would you like to name it?</label>
-                <input className={input} type="text" name="quiz-name" id="quiz-name" value={quizName} onChange={onQuizNameChanged} placeholder="Example quiz name 1"/>
-                {quizExist ? 
-                    <div className={`${asterixMessage} ${warning}`}>
-                        <span>*</span>
-                        This quiz name already exist, if you go further it will override existing one.
-                    </div> : null}
-                {!quizNameIsValid && startedWritting ?
-                    <div className={`${asterixMessage} ${error}`}>
-                        <span>*</span>
-                        You can only use letters, numbers and space. Other signs are not allowed!
-                        Also, quiz name can not starts or ends with space, or have two or more spaces in the row.
-                    </div> : null}
-                <NavLink className={`${submitBtn} ${!quizNameIssue ? available : quizNameIssue}`} to={`/edit/${normalizedQuizName}`} onClick={navLinkHandler}>Add some questions</NavLink>
-            </SupContent>
-        </SubLayout>
+        <Fragment>
+            <SubLayout>
+                <SupTitle>Add new quiz</SupTitle>
+                <SupContent>
+                    <label htmlFor="quiz-name">How would you like to name it?</label>
+                    <input className={input} type="text" name="quiz-name" id="quiz-name" value={quizName} onChange={onQuizNameChanged} placeholder="Example quiz name 1"/>
+                    {quizExist ? 
+                        <div className={`${asterixMessage} ${warning}`}>
+                            <span>*</span>
+                            This quiz name already exist, if you go further it will override existing one.
+                        </div> : null}
+                    {!quizNameIsValid && startedWritting ?
+                        <div className={`${asterixMessage} ${error}`}>
+                            <span>*</span>
+                            You can only use letters, numbers and space. Other signs are not allowed!
+                            Also, quiz name can not starts or ends with space, or have two or more spaces in the row.
+                        </div> : null}
+                    <NavLink
+                        className={`${submitBtn} ${!quizNameIssue ? available : quizNameIssue}`}
+                        to={`/edit/${normalizedQuizName}`}
+                        onClick={navLinkHandler}
+                    >Add some questions</NavLink>
+                </SupContent>
+            </SubLayout>
+            <Modal>
+                
+            </Modal>
+        </Fragment>
     )
 }
 
