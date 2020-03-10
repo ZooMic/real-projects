@@ -8,23 +8,41 @@
 }
 
 .modal {
-    border: 3px solid black;
+    border: 0.2em solid #b9b91c;
     background: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #ffffca
 }
 
-.typeSign {
+.typeSign::before {
+    
+}
+
+/* .typeSignBackground {
     position: relative;
-    border: 0.5em solid #ffffff;
-    padding: 2em;
-    width: 0;
-    height: 0;
-    top: -0.5em;
+    border: 0.2em solid #b9b91c;
+    width: 4em;
+    height: 4em;
+    top: -0.2em;
     margin-top: -2em;
-    background: url('./exclamation-mark.png');
-    border-radius: 3em;
+    border-radius: 100%;
+    background-color: #ffffca;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    transform: rotate(45deg);
+} */
+
+/* 
+ */
+
+.warning {
+    background: url('./assets/exclamation-mark.png');
     background-size: cover;
-    background-color: yellow;
+}
+
+.success {
+    background: url('./assets/success.png');
+    background-size: cover;
 }
