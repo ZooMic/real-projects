@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import SubLayout from '../../components/SupLayout/';
-import SupTitle from '../../components/SupTitle/';
-import SupContent from '../../components/SupContent/';
+import SubLayout from '../../components/SupLayout';
+import SupTitle from '../../components/SupTitle';
+import SupContent from '../../components/SupContent';
 import SupSpliter from '../../components/SupSpliter';
+import Button, { SMALL } from '../../components/Button';
 
-import { contentWrapper, inputWrapper, bordered, checkboxButton, green, red } from './EditQuizPage.module.css';
+import { contentWrapper, inputWrapper, bordered, checkboxButton, green, red, addBtn } from './EditQuizPage.module.css';
 
 const mock = {
     question: 'Do SOR zgłosił się 35-letni chory o masie 70kg po obustronnej nefrektomii, z towarzyszącą od kilku godzin gorączką do 38 stopni C. Pacjent oddał jeden uformowany stolec. Jeśli w obliczeniach pominiemy wodę metaboliczną (oksydacyjną) - ile chory powinien otrzymać płynów, aby uzyskać „zerowy” bilans płynów.',
@@ -50,7 +51,7 @@ const EditQuizPage = () => {
                     <input className={bordered} type="text" name="answer1" id="answer1" />
                     <button className={`${checkboxButton} ${red}`} />
                 </div>
-                <button>ADD</button>
+                <Button size={SMALL} className={addBtn}>ADD</Button>
                 <SupSpliter/>
                 {/* TODO - change id to normal name, from redux state*/}
                 <span>{quizId}</span>
