@@ -1,0 +1,61 @@
+.header {
+    background: #282c34;
+    color: white;
+    font-size: 3em;
+    line-height: 2em;
+    text-align: end;
+    transition: 0.2s linear;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
+}
+
+.small {
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+
+.small button {
+    border: none;
+    background: transparent;
+    animation-duration: 0.5s;
+    animation-name: fadein;
+}
+
+.small button:focus {
+    outline:none;
+}
+.small button::-moz-focus-inner {
+    border:0;
+}
+
+.right:active {
+    transform: translateX(0.1em);
+}
+
+.left:active {
+    transform: translateX(-0.1em);
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    color:inherit;
+    text-decoration: none;
+}
+
+.active {
+    color: inherit;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+  
+    to {
+        opacity: 1;
+    }
+}

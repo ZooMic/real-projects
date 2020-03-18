@@ -27,33 +27,36 @@
 .navLink {
     text-decoration: none;
     text-transform: uppercase;
-    padding: 1em;
+    padding: 0.5em;
     background-color: #bbbbbb;
-    margin: 1em 0;
+    margin: 0.5em 0;
     color: white;
     width: 80%;
     text-align: center;
     border: 5px solid;
     box-shadow: 5px 5px #c5c5c5;
-    font-family: cursive;
+    font-size: 1.2em;
+    border-radius: 5px;
+    font-weight: bold;
+
 }
 
 .greenish {
-    background-color: #2fc77e;
-    border-color: #28ab6c;
+    background-color: #1F8453;
+    border-color: #21503a;
 }
 
 .redish {
-    background-color: #e83067;
-    border-color: #c12856;
+    background-color: #c5164b;
+    border-color: #6f243b;
 }
 
 .blueish {
-    background-color: #4ed3e6;
-    border-color: #42b1c1;
+    background-color: #30808c;
+    border-color: #24545a;
 }
 
 .orangeish {
-    background-color: #FF6E4E;
-    border-color: #F6522E;
+    background-color: #ca4b2f;
+    border-color: #793121;
 }
