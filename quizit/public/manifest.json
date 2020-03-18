@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Quizit",
+  "name": "Quizit|Simple self improvement platform",
   "icons": [
     {
       "src": "favicon.ico",

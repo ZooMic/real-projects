@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { getSizeStyle, MEDIUM } from './size.helper';
 import { getColorStyle, POSITIVE, DISABLED } from './color.helper';
-import { btn } from './Button.module.css';
+import { btn, simple } from './Button.module.css';
 
 const Button = (props) => {
     const {
@@ -13,6 +13,8 @@ const Button = (props) => {
         className = '',
         onClick,
         onDisabledClicked,
+        isSimple = true,
+        ...rest
     } = props;
 
     const handleClick = event => {
@@ -29,6 +31,7 @@ const Button = (props) => {
 
     const styles = classNames(
         btn,
+        isSimple ? simple : '',
         getSizeStyle(size),
         getColorStyle(disabled ? DISABLED : color),
         className,
@@ -38,6 +41,7 @@ const Button = (props) => {
         <button
             className={styles}
             onClick={handleClick}
+            {...rest}
         >
             {children}
         </button>

@@ -34,14 +34,28 @@
 }
 
 .green {
-    background-color: #2fc77e
+    background-color: #2fc77e;
 }
 
 .red {
-    background-color: #e83067
+    background-color: #e83067;
+}
+
+.grey {
+    background-color: #989898;
 }
 
 .addBtn {
     margin: 1em 0em 0em 0em;
     width: 100%;
+}
+
+.removeBtn {
+    color: red;
+    border-color: red;
+    margin-left: 2px;
+}
+
+.sideBtn {
+    width: 4em;
 }

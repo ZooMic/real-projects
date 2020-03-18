@@ -14,6 +14,16 @@
  }]
  */
 
+ /**
+  * {
+    question: 'Do SOR zgłosił się 35-letni chory o masie 70kg po obustronnej nefrektomii, z towarzyszącą od kilku godzin gorączką do 38 stopni C. Pacjent oddał jeden uformowany stolec. Jeśli w obliczeniach pominiemy wodę metaboliczną (oksydacyjną) - ile chory powinien otrzymać płynów, aby uzyskać „zerowy” bilans płynów.',
+    answers: [
+        { text: '100 ml', correct: false },
+        { text: 'braku możliwości stosowania skutecznej antykoncepcji u kobiet', correct: true },
+    ]
+}
+  */
+
 const defaultState = {
     quizes: [],
     currentQuiz: null,
@@ -22,7 +32,7 @@ const defaultState = {
 export const ADD_QUIZ = 'ADD_QUIZ';
 export default (state = defaultState, action) => {
     switch (action.type) {
-        case ADD_QUIZ: return addQuiz(action.payload, state);
+        case ADD_QUIZ: return addQuiz(action.quiz, state);
         default: return state;
     }
 }

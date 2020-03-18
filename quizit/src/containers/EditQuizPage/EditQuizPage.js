@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SubLayout from '../../components/SupLayout';
 import SupTitle from '../../components/SupTitle';
 import SupContent from '../../components/SupContent';
 import SupSpliter from '../../components/SupSpliter';
-import Button, { SMALL } from '../../components/Button';
+import Button, { Group, XSMALL, SMALL, NEUTRAL, NEGATIVE, POSITIVE } from '../../components/Button';
+import { useQuizSelector } from '../../reducers/quizes/quizesSelectors';
 
-import { contentWrapper, inputWrapper, bordered, checkboxButton, green, red, addBtn } from './EditQuizPage.module.css';
+import { contentWrapper, inputWrapper, bordered, sideBtn, checkboxButton, green, red, grey, addBtn, removeBtn } from './EditQuizPage.module.css';
 
 const mock = {
     question: 'Do SOR zgłosił się 35-letni chory o masie 70kg po obustronnej nefrektomii, z towarzyszącą od kilku godzin gorączką do 38 stopni C. Pacjent oddał jeden uformowany stolec. Jeśli w obliczeniach pominiemy wodę metaboliczną (oksydacyjną) - ile chory powinien otrzymać płynów, aby uzyskać „zerowy” bilans płynów.',
@@ -18,44 +19,86 @@ const mock = {
 
 const EditQuizPage = () => {
     const { quizId } = useParams();
+    const { name } = useQuizSelector(quizId);
+    const [question, setQuestion] = useState('');
+    const [answers, setAnswers] = useState([{ text: '', correct: true }, { text: '', correct: false }]);
+
+    const handleQuestionChange = event => {
+        const value = event.target.value;
+        setQuestion(value);
+    };
+
+    const handleAnswerChange = event => {
+        const value = event.target.value;
+        const answerId = event.target.name;
+        const answer = answers[answerId];
+        const newAnswers = [...answers];
+        if (answer) {
+            newAnswers[answerId] = { ...answer, text: value };
+        } else {
+            newAnswers.push({
+                text: value,
+                correct: false,
+            });
+        }
+        setAnswers(newAnswers);
+    }
+
+    const handleAnswerButton = event => {
+        const answerId = event.target.name;
+        const answer = answers[answerId];
+        if (answer) {
+            const newAnswers = [...answers];
+            newAnswers[answerId] = { ...answer, correct: !answer.correct };
+            setAnswers(newAnswers);
+        }
+    }
+
+    const handleAddAnswer = () => {
+        const newAnswers = [...answers, {
+            text: '',
+            correct: false,
+            removeOnBlue: true,
+        }];
+        setAnswers(newAnswers)
+    }
+
+    const handleRemoveAnswer = event => {
+        const answerId = event.target.name;
+        const answer = answers[answerId];
+        if (answer) {
+            const newAnswers = [...answers];
+            newAnswers.splice(Number(answerId), 1);
+            setAnswers(newAnswers);
+        }
+        
+    }
+
     return (
         <SubLayout>
             <SupTitle>Edit questions</SupTitle>
             <SupContent className={contentWrapper}>
                 <div className={inputWrapper}>
                     <label htmlFor="question">Question:</label>
-                    <textarea className={bordered} id="question" rows="5" value={mock.question}></textarea>
+                    <textarea className={bordered} id="question" rows="5" value={question} onChange={handleQuestionChange}></textarea>
                 </div>
-                <div className={inputWrapper}>
-                    <label htmlFor="answer1">1)&nbsp;</label>
-                    <input className={bordered} type="text" name="answer1" id="answer1" value={mock.answers[0].text}/>
-                    <button className={`${checkboxButton} ${mock.answers[0].correct ? green: red}`} />
-                </div>
-                <div className={inputWrapper}>
-                    <label htmlFor="answer1">2)&nbsp;</label>
-                    <input className={bordered} type="text" name="answer1" id="answer1" value={mock.answers[1].text}/>
-                    <button className={`${checkboxButton} ${mock.answers[1].correct ? green: red}`} />
-                </div>
-                <div className={inputWrapper}>
-                    <label htmlFor="answer1">+&nbsp;&nbsp;</label>
-                    <input className={bordered} type="text" name="answer1" id="answer1" />
-                    <button className={`${checkboxButton} ${red}`} />
-                </div>
-                <div className={inputWrapper}>
-                    <label htmlFor="answer1">+&nbsp;&nbsp;</label>
-                    <input className={bordered} type="text" name="answer1" id="answer1" />
-                    <button className={`${checkboxButton} ${red}`} />
-                </div>
-                <div className={inputWrapper}>
-                    <label htmlFor="answer1">+&nbsp;&nbsp;</label>
-                    <input className={bordered} type="text" name="answer1" id="answer1" />
-                    <button className={`${checkboxButton} ${red}`} />
-                </div>
-                <Button size={SMALL} className={addBtn}>ADD</Button>
+                {
+                    answers.map(({ text, correct }, id) => (
+                        <div className={inputWrapper} key={`answer-${id}`}>
+                            <label htmlFor={id}>{id + 1})&nbsp;</label>
+                            <input className={bordered} type="text" name={id} id={id} value={text} onChange={handleAnswerChange} />
+                            <Button size={XSMALL} color={correct ? POSITIVE : NEGATIVE} onClick={handleAnswerButton} name={id} className={sideBtn}/>
+                            <Button size={XSMALL} color={NEGATIVE} onClick={handleRemoveAnswer} name={id} className={sideBtn}>X</Button>
+                        </div>
+                    ))
+                }
+                <Group>
+                    <Button size={SMALL} onClick={handleAddAnswer}>ADD ANSWER</Button>
+                    <Button size={SMALL} color={NEUTRAL} onClick={x => x}>SAVE QUESTION</Button>
+                </Group>
                 <SupSpliter/>
-                {/* TODO - change id to normal name, from redux state*/}
-                <span>{quizId}</span>
-                <span>Show questions list - link</span>
+                <span>{name}</span>
+                <Button size={SMALL} color={NEUTRAL} onClick={x => x}>Open question list</Button>
             </SupContent>
         </SubLayout>
     )

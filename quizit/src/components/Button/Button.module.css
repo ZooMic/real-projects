@@ -5,9 +5,10 @@
     padding: 0.5em;
     text-align: center;
     border: 5px solid;
-    box-shadow: 5px 5px #c5c5c5;
     color: white;
     transition: 0.05s linear;
+    box-shadow: 5px 5px #c5c5c5;
+
 }
 
 .btn:active {
@@ -15,8 +16,20 @@
     box-shadow: 0px 0px #c5c5c5;
 }
 
+.simple {
+    box-shadow: 0px 0px #c5c5c5;
+}
+
+.simple:active {
+    transform: scale(1.1, 1.1);
+}
+
 /* SIZE HELPER */
-.small { font-size: 0.5em; }
+.xsmall {
+    font-size: 0.4em;
+    border: 2px solid;
+}
+.small { font-size: 0.4em; }
 .medium { font-size: 0.8em; }
 .big { font-size: 1em; }
 
