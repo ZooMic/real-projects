@@ -9,6 +9,6 @@
         -2px -2px #fffaf2;
     width: 100%;
     white-space: pre;
-    font-size:1.5em;
+    font-size:var(--font-middle);
     text-align: center;
 }

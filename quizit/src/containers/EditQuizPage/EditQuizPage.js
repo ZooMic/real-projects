@@ -4,6 +4,9 @@ import SubLayout from '../../components/SupLayout';
 import SupTitle from '../../components/SupTitle';
 import SupContent from '../../components/SupContent';
 import SupSpliter from '../../components/SupSpliter';
+import { Input, TextArea } from '../../components/Input';
+import { Button as AntButton } from 'antd';
+
 import Button, { Group, XSMALL, SMALL, NEUTRAL, NEGATIVE, POSITIVE } from '../../components/Button';
 import { useQuizSelector } from '../../reducers/quizes/quizesSelectors';
 
@@ -78,20 +81,23 @@ const EditQuizPage = () => {
         <SubLayout>
             <SupTitle>Edit questions</SupTitle>
             <SupContent className={contentWrapper}>
+                <TextArea />
                 <div className={inputWrapper}>
                     <label htmlFor="question">Question:</label>
-                    <textarea className={bordered} id="question" rows="5" value={question} onChange={handleQuestionChange}></textarea>
+                    <TextArea id="question" rows="5" value={question} onChange={handleQuestionChange} />
                 </div>
                 {
                     answers.map(({ text, correct }, id) => (
                         <div className={inputWrapper} key={`answer-${id}`}>
                             <label htmlFor={id}>{id + 1})&nbsp;</label>
-                            <input className={bordered} type="text" name={id} id={id} value={text} onChange={handleAnswerChange} />
+                            <Input name={id} id={id} value={text} onChange={handleAnswerChange}/>
+                            {/* <input className={bordered} type="text" name={id} id={id} value={text} onChange={handleAnswerChange} /> */}
                             <Button size={XSMALL} color={correct ? POSITIVE : NEGATIVE} onClick={handleAnswerButton} name={id} className={sideBtn}/>
                             <Button size={XSMALL} color={NEGATIVE} onClick={handleRemoveAnswer} name={id} className={sideBtn}>X</Button>
                         </div>
                     ))
                 }
+                <AntButton type="dashed">ADD ANSWER</AntButton>
                 <Group>
                     <Button size={SMALL} onClick={handleAddAnswer}>ADD ANSWER</Button>
                     <Button size={SMALL} color={NEUTRAL} onClick={x => x}>SAVE QUESTION</Button>

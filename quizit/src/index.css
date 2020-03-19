@@ -4,3 +4,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+:root {
+  --font-big: 64px;
+  --font-middle: 32px;
+  --font-small: 24px;
+  --font-xsmall: 16px;
+}

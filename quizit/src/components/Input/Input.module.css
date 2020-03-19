@@ -1,0 +1,7 @@
+textarea.fontInherit,
+input.fontInherit,
+span.fontInherit,
+.fontInherit span,
+.fontInherit input {
+    font-size: inherit;
+}

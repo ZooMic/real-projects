@@ -9,17 +9,17 @@ const MainBanner = () => {
     const { pathname } = useLocation();
     const { goBack, goForward } = useHistory();
 
-    const isRootPath = pathname !== rootPath;
+    const isRootPath = pathname === rootPath;
     const classes = classNames(
         header,
-        isRootPath ? small : '',
+        !isRootPath ? small : '',
     )
     
     return (
         <header className={classes}>
-            {isRootPath ? <button className={left} onClick={goBack}><CaretLeftOutlined /></button> : null}
+            {!isRootPath ? <button className={left} onClick={goBack}><CaretLeftOutlined /></button> : null}
             <NavLink className={title} activeClassName={active} to="/">Quizit</NavLink>
-            {isRootPath ? <button className={right} onClick={goForward}><CaretRightOutlined /></button> : null}
+            {!isRootPath ? <button className={right} onClick={goForward}><CaretRightOutlined /></button> : null}
         </header>
     )
 }

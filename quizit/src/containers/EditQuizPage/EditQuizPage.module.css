@@ -9,7 +9,7 @@
 
 .inputWrapper {
     display: flex;
-    font-size: 0.7em;
+    font-size: var(--font-xsmall);
     width: 100%;
 }
 
@@ -18,9 +18,8 @@
 }
 
 .inputWrapper textarea, .inputWrapper input {
-    font-family: inherit;
-    font-size: 0.7em;
-    width: 100%;
+    /* font-family: inherit; */
+    /* width: 100%; */
 }
 
 .bordered {

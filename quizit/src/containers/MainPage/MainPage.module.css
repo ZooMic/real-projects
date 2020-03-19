@@ -35,7 +35,7 @@
     text-align: center;
     border: 5px solid;
     box-shadow: 5px 5px #c5c5c5;
-    font-size: 1.2em;
+    font-size: var(--font-small);
     border-radius: 5px;
     font-weight: bold;
 

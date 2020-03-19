@@ -32,6 +32,7 @@
     border: 5px solid;
     color: white;
     margin-top: 2em;
+    width: 100%;
 }
 
 .disabled {
@@ -47,4 +48,8 @@
 .warningBtn {
     background-color: #ffbb33;
     border-color: #ff8800;
+}
+
+.newInput, .newInput input {
+    font-size: inherit;
 }

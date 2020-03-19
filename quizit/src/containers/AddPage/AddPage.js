@@ -1,4 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { Input } from '../../components/Input';
+import { BarsOutlined } from '@ant-design/icons';
+
 import { NavLink, useHistory } from "react-router-dom";
 import SubLayout from '../../components/SupLayout';
 import SupTitle from '../../components/SupTitle';
@@ -6,7 +9,7 @@ import SupContent from '../../components/SupContent';
 import Modal from '../../components/Modal';
 import { useTextValidator, useRouteNormalizer } from '../../custom-hooks';
 import useQuizActions from '../../reducers/quizes/quizesActions';
-import { error, submitBtn, warning, asterixMessage, available, disabled, warningBtn, input } from './AddPage.module.css';
+import { error, submitBtn, warning, asterixMessage, available, disabled, warningBtn, input, newInput } from './AddPage.module.css';
 
 
 // TODO - remove mock, handle real quiz list from redux state
@@ -59,8 +62,7 @@ const AddPage = () => {
             <SubLayout>
                 <SupTitle>Add new quiz</SupTitle>
                 <SupContent>
-                    <label htmlFor="quiz-name">How would you like to name it?</label>
-                    <input className={input} type="text" name="quiz-name" id="quiz-name" value={quizName} onChange={onQuizNameChanged} placeholder="Example quiz name 1"/>
+                    <Input placeholder="Enter quiz name" value={quizName} onChange={onQuizNameChanged} />
                     {quizExist ? 
                         <div className={`${asterixMessage} ${warning}`}>
                             <span>*</span>
@@ -76,7 +78,7 @@ const AddPage = () => {
                         className={`${submitBtn} ${!quizNameIssue ? available : quizNameIssue}`}
                         to={`/edit/${normalizedQuizName}`}
                         onClick={navLinkHandler}
-                    >Add some questions</NavLink>
+                    >ADD</NavLink>
                 </SupContent>
             </SubLayout>
             <Modal>
@@ -87,3 +89,4 @@ const AddPage = () => {
 }
 
 export default AddPage;
+
