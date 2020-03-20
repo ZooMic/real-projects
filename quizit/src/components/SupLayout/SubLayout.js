@@ -1,5 +1,5 @@
 import React from 'react'
-import { wrapper, nav, child} from './SubLayout.module.css'
+import { wrapper, child} from './SubLayout.module.css'
 
 const SubLayout = ({ children, className }) => {
     return (

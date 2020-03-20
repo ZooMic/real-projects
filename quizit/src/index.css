@@ -10,4 +10,8 @@ body {
   --font-middle: 32px;
   --font-small: 24px;
   --font-xsmall: 16px;
+
+  --color-lighgreen: #26a266;
+  --color-green: #1F8453;
+  --color-darkgreen: #16653e;
 }

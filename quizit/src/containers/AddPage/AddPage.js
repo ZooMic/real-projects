@@ -1,7 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Input } from '../../components/Input';
-import { BarsOutlined } from '@ant-design/icons';
-
+import { Input } from '../../components/CustomAnt';
 import { NavLink, useHistory } from "react-router-dom";
 import SubLayout from '../../components/SupLayout';
 import SupTitle from '../../components/SupTitle';
@@ -9,7 +7,7 @@ import SupContent from '../../components/SupContent';
 import Modal from '../../components/Modal';
 import { useTextValidator, useRouteNormalizer } from '../../custom-hooks';
 import useQuizActions from '../../reducers/quizes/quizesActions';
-import { error, submitBtn, warning, asterixMessage, available, disabled, warningBtn, input, newInput } from './AddPage.module.css';
+import { error, submitBtn, warning, asterixMessage, available, disabled, warningBtn } from './AddPage.module.css';
 
 
 // TODO - remove mock, handle real quiz list from redux state

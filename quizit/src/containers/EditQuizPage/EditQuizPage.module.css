@@ -1,7 +1,3 @@
-.contentWrapper {
-
-}
-
 .contentWrapper input {
     font-size: 1em;
     width: 100%;
@@ -17,44 +13,24 @@
     margin-right: 0.3em;
 }
 
-.inputWrapper textarea, .inputWrapper input {
-    /* font-family: inherit; */
-    /* width: 100%; */
-}
-
 .bordered {
     border: 1px solid;
 }
 
-.checkboxButton {
-    width: 3em;
-    border: 1px solid;
-    border-left: 0px;
+.answerLabel {
+    display: flex;
+    align-items: center;
 }
 
-.green {
-    background-color: #2fc77e;
+.flex {
+    display: flex;
+    align-items: center;
 }
 
-.red {
-    background-color: #e83067;
-}
-
-.grey {
-    background-color: #989898;
-}
-
-.addBtn {
-    margin: 1em 0em 0em 0em;
+.details {
     width: 100%;
 }
 
-.removeBtn {
-    color: red;
-    border-color: red;
-    margin-left: 2px;
-}
-
-.sideBtn {
-    width: 4em;
+.boldText {
+    font-weight: bold;
 }

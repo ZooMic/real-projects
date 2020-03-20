@@ -4,27 +4,22 @@ import SubLayout from '../../components/SupLayout';
 import SupTitle from '../../components/SupTitle';
 import SupContent from '../../components/SupContent';
 import SupSpliter from '../../components/SupSpliter';
-import { Input, TextArea } from '../../components/Input';
-import { Button as AntButton } from 'antd';
-
-import Button, { Group, XSMALL, SMALL, NEUTRAL, NEGATIVE, POSITIVE } from '../../components/Button';
+import { message } from 'antd';
+import { CheckSquareOutlined, CloseSquareOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Button, Input, TextArea, NavLink } from '../../components/CustomAnt';
 import { useQuizSelector } from '../../reducers/quizes/quizesSelectors';
-
-import { contentWrapper, inputWrapper, bordered, sideBtn, checkboxButton, green, red, grey, addBtn, removeBtn } from './EditQuizPage.module.css';
-
-const mock = {
-    question: 'Do SOR zgłosił się 35-letni chory o masie 70kg po obustronnej nefrektomii, z towarzyszącą od kilku godzin gorączką do 38 stopni C. Pacjent oddał jeden uformowany stolec. Jeśli w obliczeniach pominiemy wodę metaboliczną (oksydacyjną) - ile chory powinien otrzymać płynów, aby uzyskać „zerowy” bilans płynów.',
-    answers: [
-        { text: '100 ml', correct: false },
-        { text: 'braku możliwości stosowania skutecznej antykoncepcji u kobiet', correct: true },
-    ]
-}
+import { contentWrapper, inputWrapper, details, boldText, answerLabel, flex } from './EditQuizPage.module.css';
 
 const EditQuizPage = () => {
     const { quizId } = useParams();
     const { name } = useQuizSelector(quizId);
     const [question, setQuestion] = useState('');
-    const [answers, setAnswers] = useState([{ text: '', correct: true }, { text: '', correct: false }]);
+    const [answers, setAnswers] = useState([
+        { text: '', correct: true },
+        { text: '', correct: false },
+        { text: '', correct: false },
+        { text: '', correct: false },
+    ]);
 
     const handleQuestionChange = event => {
         const value = event.target.value;
@@ -73,59 +68,65 @@ const EditQuizPage = () => {
             const newAnswers = [...answers];
             newAnswers.splice(Number(answerId), 1);
             setAnswers(newAnswers);
-        }
-        
+        }   
+    }
+
+    const saveQuestion = event => {
+        // save
+        // clear
+        // added message 
+        message.success('Question added!')
     }
 
     return (
         <SubLayout>
             <SupTitle>Edit questions</SupTitle>
             <SupContent className={contentWrapper}>
-                <TextArea />
                 <div className={inputWrapper}>
                     <label htmlFor="question">Question:</label>
-                    <TextArea id="question" rows="5" value={question} onChange={handleQuestionChange} />
+                    <TextArea id="question" rows="3" value={question} onChange={handleQuestionChange} />
                 </div>
                 {
                     answers.map(({ text, correct }, id) => (
                         <div className={inputWrapper} key={`answer-${id}`}>
-                            <label htmlFor={id}>{id + 1})&nbsp;</label>
+                            <label className={answerLabel} htmlFor={id}>{id + 1})&nbsp;</label>
                             <Input name={id} id={id} value={text} onChange={handleAnswerChange}/>
-                            {/* <input className={bordered} type="text" name={id} id={id} value={text} onChange={handleAnswerChange} /> */}
-                            <Button size={XSMALL} color={correct ? POSITIVE : NEGATIVE} onClick={handleAnswerButton} name={id} className={sideBtn}/>
-                            <Button size={XSMALL} color={NEGATIVE} onClick={handleRemoveAnswer} name={id} className={sideBtn}>X</Button>
+                            <div className={flex}>
+                                <Button
+                                    type={correct ? "primary" : null}
+                                    icon={correct ? <CheckSquareOutlined /> : <CloseSquareOutlined/> }
+                                    green={correct}
+                                    danger={!correct}
+                                    onClick={handleAnswerButton}
+                                    name={id}
+                                    size="large"
+                                />
+                                <Button
+                                    type="primary"
+                                    icon={<DeleteOutlined />}
+                                    danger
+                                    onClick={handleRemoveAnswer}
+                                    name={id}
+                                    size="large"
+                                />
+                            </div>
                         </div>
                     ))
                 }
-                <AntButton type="dashed">ADD ANSWER</AntButton>
-                <Group>
-                    <Button size={SMALL} onClick={handleAddAnswer}>ADD ANSWER</Button>
-                    <Button size={SMALL} color={NEUTRAL} onClick={x => x}>SAVE QUESTION</Button>
-                </Group>
+                <Button type="dashed" block green onClick={handleAddAnswer}>ADD ANSWER</Button>
+                <Button type="primary" block green onClick={saveQuestion}>SAVE QUESTION</Button>
                 <SupSpliter/>
-                <span>{name}</span>
-                <Button size={SMALL} color={NEUTRAL} onClick={x => x}>Open question list</Button>
+                <div className={details}>
+                    <span>Details:</span>
+                    <ul>
+                        <li><span>Quiz name: <span className={boldText}>{name}</span></span></li>
+                        <li><span>Number of questions: <span className={boldText}>123</span> </span></li>
+                    </ul>
+                </div>
+                <NavLink to={`/edit/${quizId}/list`}>OPEN QUESTIONS LIST</NavLink>
             </SupContent>
         </SubLayout>
-    )
+    );
 }
 
 export default EditQuizPage;
-
-/**
- * Insert question:
- * Answer 1: [      ]
- * Answer 2: []()
- * Answer +: []()
- * Save
- */
-
-  // {/* input question */}
-            // {/* input answer 1* [checkbox for correct answer]*/}
-            // {/* input add new answer, on focus another below appears */}
-            // {/* SUBBMIT ADD/SAVE ETC.*/}
-            // /**
-            //  *          <div className="added-section">
-            //             <div>id, question..., [REMOVE] [EDIT]</div>
-            //             </div>
-            //  */
