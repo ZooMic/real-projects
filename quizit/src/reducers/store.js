@@ -1,9 +1,17 @@
-import { combineReducers, createStore } from 'redux';
-import quizes from './quizes/quizesReducer';
+import { createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import rootReducer from './rootReducer';
 
-const rootReducer = combineReducers({ quizes });
-const store = createStore(
-    rootReducer,
+const persistConfig = {
+    key: 'root-redux-store',
+    storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = createStore(
+    persistedReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-export default store;
+export const persistor = persistStore(store);
